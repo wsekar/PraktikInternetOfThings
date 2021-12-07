@@ -8,26 +8,27 @@ Serial.begin(9600); // Starting Serial Terminal
 
 void loop()
 {
-long duration, inches, cm;
-pinMode(pingPin, OUTPUT);
-digitalWrite(pingPin, LOW);
-delayMicroseconds(2);
-digitalWrite(pingPin, HIGH);
-delayMicroseconds(10);
-digitalWrite(pingPin, LOW);
+long duration, inches, cm; 
+pinMode(pingPin, OUTPUT); //mendefinisikan output yaitu pingPin
+//digitalWrite memberikan nilai HIGH atau LOW pada pin digital
+digitalWrite(pingPin, LOW); //mengatur agar pingPin tidak menyala
+delayMicroseconds(2); //menjeda program dalam jumlah waktu 2 microseconds
+digitalWrite(pingPin, HIGH);//mengatur agar pingPin menyala
+delayMicroseconds(10);//menjeda program dalam jumlah waktu 10 microseconds
+digitalWrite(pingPin, LOW); //mengatur agar pingPin tidak menyala
 
-pinMode(echoPin, INPUT);
-duration = pulseIn(echoPin, HIGH);
-inches = microsecondsToInches(duration);
-cm = microsecondsToCentimeters(duration);
+pinMode(echoPin, INPUT);//mendefinisikan input yaitu echoPin
+duration = pulseIn(echoPin, HIGH); //membuat variabel duration, pulseIn untuk menunggu nilai dari LOW ke HIGH
+inches = microsecondsToInches(duration); //membuat variabel inches, yang menampung nilai dari microsecondsToInches
+cm = microsecondsToCentimeters(duration);//membuat variabel cm, yang menampung nilai dari microsecondsToCentimeters
 
-Serial.print(inches);
+Serial.print(inches); //mencetak nilai dari variabel inches yang telah didefinisikan
 Serial.print("in, ");
-Serial.print(cm);
+Serial.print(cm);//mencetak nilai dari variabel cm yang telah didefinisikan
 Serial.print("cm");
 Serial.println();
 
-delay(100);
+delay(100); //menjeda program dalam waktu 100 milisecond
 }
 
 long microsecondsToInches(long microseconds)
